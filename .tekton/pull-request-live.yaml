@@ -1,5 +1,6 @@
-# Live pipeline trigger for payments-service (jackson Lightwell demo).
-# Requires .upgrade-delta/ vendor bundle and cluster secrets (maven settings, PaC).
+# Live pipeline trigger for payments-service-notests (REACHABILITY_ONLY honesty path).
+# No *.java under src/test/java — Surefire is skipped; grade comes from call-site analysis.
+# Dedicated PVC so reports are never overwritten by the with-tests payments-service runs.
 #
 # Demo cycle: ./scripts/demo-live-cycle.sh start | finish
 apiVersion: tekton.dev/v1
@@ -22,7 +23,7 @@ metadata:
     pipelinesascode.tekton.dev/task-9: ".upgrade-delta/real-pipeline/task-cab-decision.yaml"
     pipelinesascode.tekton.dev/task-10: ".upgrade-delta/real-pipeline/task-build-payments-image.yaml"
     pipelinesascode.tekton.dev/task-11: ".upgrade-delta/real-pipeline/task-canary-rollout.yaml"
-  name: upgrade-delta-live-pr
+  name: upgrade-delta-live-pr-notests
 spec:
   pipelineRef:
     name: upgrade-delta-live
@@ -36,7 +37,7 @@ spec:
     - name: pom-path
       value: 'pom.xml'
     - name: app-name
-      value: 'payments-service'
+      value: 'payments-service-notests'
     - name: app-module-dir
       value: '.'
     - name: fail-on
@@ -54,7 +55,7 @@ spec:
     - name: pull-request-number
       value: '{{ pull_request_number }}'
     - name: scorecard-route-host
-      value: 'scorecard-upgrade-delta-demo.apps.asaran.na-launch.com'
+      value: 'scorecard-notests-upgrade-delta-demo.apps.asaran.na-launch.com'
     # false for Lightwell remediations: keep PR open so CAB reports can be
     # reviewed and the PR merged. (demo-live-cycle.sh finish closes demo PRs.)
     - name: auto-close-pr
@@ -73,7 +74,7 @@ spec:
   workspaces:
     - name: source
       persistentVolumeClaim:
-        claimName: upgrade-delta-live-reports
+        claimName: upgrade-delta-live-reports-notests
     - name: maven-settings
       secret:
         secretName: lightwell-maven-settings

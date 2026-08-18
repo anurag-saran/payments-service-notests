@@ -5,13 +5,14 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
-  <artifactId>payments-service</artifactId>
+  <artifactId>payments-service-notests</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
-  <name>payments-service</name>
+  <name>payments-service-notests</name>
   <description>
-    Shared demo app for Lightwell GitHub remediations and upgrade-delta live grading.
-    Not a production payments product.
+    Sibling of payments-service with no unit/IT sources under src/test/java.
+    Used to demo upgrade-delta's REACHABILITY_ONLY honesty path (grade from
+    call-site analysis; Surefire skipped). Not a production payments product.
     Lightwell versions (when used) come only from the public console demos:
     java-remediated-demo / java-validated-demo (public-lightwell-demo Maven feeds).
   </description>

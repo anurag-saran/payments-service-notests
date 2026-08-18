@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# demo-live-cycle.sh — repeatable live pom.xml demo for payments-service
+# demo-live-cycle.sh — repeatable live pom.xml demo for payments-service-notests
+# (REACHABILITY_ONLY — empty src/test/java). Watch upgrade-delta-live-pr-notests-…
 #
 #   ./scripts/demo-live-cycle.sh start    # branch + bump jackson → Lightwell + open PR
 #   ./scripts/demo-live-cycle.sh finish   # close PR(s) without merge; ensure main is community
@@ -124,7 +125,8 @@ EOF
     }
   echo "$url"
   echo
-  echo "Watch: OpenShift PipelineRun upgrade-delta-live-pr-..."
+  echo "Watch: OpenShift PipelineRun upgrade-delta-live-pr-notests-..."
+  echo "Scorecard: https://scorecard-notests-upgrade-delta-demo.apps.asaran.na-launch.com/out/reports/scorecard.html"
   echo "When done:  ./scripts/demo-live-cycle.sh finish"
 }
 
