@@ -1,9 +1,15 @@
 # payments-service-notests
 
+[![Lightwell library updates](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fanurag-saran%2Fpayments-service-notests%2Flightwell%2Fbadge%2Flightwell-badge.json&v=2)](https://github.com/anurag-saran/payments-service-notests/pulls?q=is%3Apr+is%3Aopen+label%3Alightwell)
+
 Sibling of **[payments-service](https://github.com/anurag-saran/payments-service)** with
 **no `*.java` under `src/test/java`**. Same app sources, DemoHttpServer, Dockerfile, and
 deploy manifests — used to demo upgrade-delta's **REACHABILITY_ONLY** honesty path
 (grade from call-site analysis; Surefire skipped).
+
+Remediations come from the
+**[Lightwell GitHub plugin](https://github.com/anurag-saran/lightwell-github-plugin-demo)**
+(badge sync checks out that repo).
 
 Not a production payments product. Package: `com.example.payments`.
 
